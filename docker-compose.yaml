@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  db:
+    labels:
+      author: "Tural Mukhdarov"
+      version: "1.0.0"
+    image: postgres:alpine3.19
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: "bookshop_online"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - data:/var/lib/postgresql/data
+    networks:
+      - net
+    ports:
+      - "5432:5432"
+
+volumes:
+  data:
+
+networks:
+  net:
+    driver: bridge
