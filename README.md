@@ -28,7 +28,8 @@ Bookshop_online представляет из себя простую реали
 Используйте дамп **init.sql** чтобы восстановить базу данных.
 Для этого можно использовать утилиту psql или IDE, например DataGrip.
 
-Восстановление с помощью утилиты **psql** для **Linux/MacOS**:
+#### Восстановление с помощью утилиты **psql** для **Linux/MacOS**:
+
 - Создать пустую БД
     ```
     psql -U postgres -c "CREATE DATABASE bookshop_online;"
@@ -37,10 +38,19 @@ Bookshop_online представляет из себя простую реали
     ```
     psql -U postgres -d bookshop_online -f ./init.sql
     ```
+#### Восстановление с помощью утилиты **psql** для **Windows**:
+
+- Создать пустую БД
+    ```
+    .\psql.exe -U postgres -c "CREATE DATABASE bookshop_online;"
+    ```
+- Восстановить БД из дампа
+    ```
+    .\psql.exe -U postgres -d bookshop_online -f "C:\Temp\database_bookshop_online\scripts\init.sql"
 
 ### Docker
 
-Перейти в папку с проектом и выполнить команду для запуска PostgreSQL с БД в контейнере.
+Перейти в папку с проектом и выполнить команды для запуска PostgreSQL с БД в контейнере.
 
 - Создать образ и запустить контейнер на основе файла [Docker Compose](docker-compose.yaml)
     ```
